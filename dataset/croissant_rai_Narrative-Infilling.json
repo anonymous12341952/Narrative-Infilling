@@ -1,0 +1,312 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "arrayShape": "cr:arrayShape",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "containedIn": "cr:containedIn",
+    "cr": "http://mlcommons.org/croissant/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isArray": "cr:isArray",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "prov": "http://www.w3.org/ns/prov#"
+  },
+  "@type": "sc:Dataset",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "repo",
+      "name": "repo",
+      "description": "The Hugging Face git repository.",
+      "contentUrl": "https://huggingface.co/datasets/anonymous12341952/Narrative-Infilling/tree/refs%2Fconvert%2Fparquet",
+      "encodingFormat": "git+https",
+      "sha256": "https://github.com/mlcommons/croissant/issues/80"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "parquet-files-for-config-default",
+      "containedIn": {
+        "@id": "repo"
+      },
+      "encodingFormat": "application/x-parquet",
+      "includes": "default/*/*.parquet"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "dataType": "cr:Split",
+      "key": {
+        "@id": "default_splits/split_name"
+      },
+      "@id": "default_splits",
+      "name": "default_splits",
+      "description": "Splits for the default config.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "default_splits/split_name",
+          "dataType": "sc:Text"
+        }
+      ],
+      "data": [
+        {
+          "default_splits/split_name": "train"
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "default",
+      "description": "anonymous12341952/Narrative-Infilling - 'default' subset",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "default/split",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "parquet-files-for-config-default"
+            },
+            "extract": {
+              "fileProperty": "fullpath"
+            },
+            "transform": {
+              "regex": "default/(?:partial-)?(train)/.+parquet$"
+            }
+          },
+          "references": {
+            "field": {
+              "@id": "default_splits/split_name"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "default/dataset",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "parquet-files-for-config-default"
+            },
+            "extract": {
+              "column": "dataset"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "default/ref_id",
+          "dataType": "cr:Int64",
+          "source": {
+            "fileSet": {
+              "@id": "parquet-files-for-config-default"
+            },
+            "extract": {
+              "column": "ref_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "default/source_text",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "parquet-files-for-config-default"
+            },
+            "extract": {
+              "column": "source_text"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "default/problem",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "parquet-files-for-config-default"
+            },
+            "extract": {
+              "column": "problem"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "default/gold_answer",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "parquet-files-for-config-default"
+            },
+            "extract": {
+              "column": "gold_answer"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "default/unit",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "parquet-files-for-config-default"
+            },
+            "extract": {
+              "column": "unit"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "default/n",
+          "dataType": "cr:Int64",
+          "source": {
+            "fileSet": {
+              "@id": "parquet-files-for-config-default"
+            },
+            "extract": {
+              "column": "n"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "default/unit_idx",
+          "dataType": "cr:Int64",
+          "source": {
+            "fileSet": {
+              "@id": "parquet-files-for-config-default"
+            },
+            "extract": {
+              "column": "unit_idx"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "conformsTo": "http://mlcommons.org/croissant/1.1",
+  "name": "Narrative-Infilling",
+  "description": "\n\t\n\t\t\n\t\tDataset Card for NarrativeInfilling Benchmark\n\t\n\n\n\t\n\t\t\n\t\tDataset Details\n\t\n\n\n\t\n\t\t\n\t\tDataset Description\n\t\n\nThe Narrative Infilling Benchmark is a large-scale evaluation dataset for \nnarrative infilling the task of generating a missing span within a \nnarrative while maintaining consistency with both the preceding and following \ncontext. The benchmark spans four narrative domains and contains 9,142 instances \nwith systematic variation in blank position and span length, enabling… See the full description on the dataset page: https://huggingface.co/datasets/anonymous12341952/Narrative-Infilling.",
+  "alternateName": [
+    "anonymous12341952/Narrative-Infilling",
+    "NarrativeInfilling-Benchmark"
+  ],
+  "creator": {
+    "@type": "Person",
+    "name": "anonymous2",
+    "url": "https://huggingface.co/anonymous12341952"
+  },
+  "keywords": [
+    "text-generation",
+    "fill-mask",
+    "English",
+    "other",
+    "1K - 10K",
+    "csv",
+    "Tabular",
+    "Text",
+    "Datasets",
+    "pandas",
+    "Polars",
+    "Croissant",
+    "🇺🇸 Region: US",
+    "narrative infilling",
+    "text infilling",
+    "story understanding",
+    "benchmark",
+    "language model evaluation"
+  ],
+  "license": "https://choosealicense.com/licenses/other/",
+  "url": "https://huggingface.co/datasets/anonymous12341952/Narrative-Infilling",
+  "rai:dataLimitations": "- The dataset is English only and does not support multilingual evaluation\n  - The benchmark spans four narrative domains; generalization to other genres or text types is not guaranteed\n  - Missing spans are contiguous sentence sequences of one to three sentences; non-contiguous or stylistic gaps are not covered\n  - Benchmark instances are drawn from publicly available corpora and may overlap with LLM pretraining data, though contamination analysis shows fewer than 0.15% of model responses exhibit near-verbatim reproduction",
+  "rai:dataBiases": "- Source corpora may reflect the demographic and cultural biases present in Wikipedia, CNN/DailyMail, ROCStories, and SIND\n  - News articles (CNN/DailyMail) may contain temporal and political biases\n  - Commonsense stories (ROCStories) reflect everyday scenarios predominantly from Western cultural contexts\n  - Visual narratives (SIND) are grounded in Flickr image captions and may reflect photographer and platform biases",
+  "rai:personalSensitiveInformation": "- All documents are drawn from publicly available sources\n  - No individual personal identifiers are intentionally included\n  - Users should screen for personally identifiable information before redistribution or downstream use",
+  "rai:dataUseCases": "- Evaluating narrative infilling capabilities of instruction-tuned language models\n- Benchmarking automatic and qualitative evaluation metrics for text generation\n- Studying the effect of prompt design and reasoning guidance on narrative reconstruction\n- Use cases for which validity has not been established include open-domain generation, multilingual infilling, and non-narrative text reconstruction",
+  "rai:dataSocialImpact": "rai:dataSocialImpact:\n  - Positive impacts include enabling more rigorous and systematic \n    evaluation of LLM narrative understanding across diverse text \n    genres, supporting reproducible NLP research through a standardized \n    multi-domain benchmark, and providing an openly accessible resource \n    for studying discourse-aware text generation.\n  - The benchmark may support downstream applications in automated \n    writing assistance, document editing, and story generation tools, \n    which could benefit content creators and researchers working on \n    narrative AI systems.\n  - Potential risks include over-reliance on automated infilling metrics \n    in sensitive contexts such as legal or medical document editing, \n    where hallucinated or contextually inconsistent spans could cause harm.\n  - The benchmark is derived from publicly available corpora and does \n    not target any specific demographic group; however, the source \n    datasets may reflect cultural and linguistic biases that could \n    disadvantage of underrepresented communities in downstream applications.\n  - Mitigation: the dataset is released for non-commercial research \n    purposes only. Users are encouraged to apply appropriate human \n    oversight when deploying infilling systems in high-stakes settings.",
+  "rai:hasSyntheticData": false,
+  "prov:wasDerivedFrom": [
+    {
+      "@id": "https://huggingface.co/datasets/wikimedia/wikipedia",
+      "prov:label": "Wikipedia",
+      "sc:license": "CC BY-SA 4.0"
+    },
+    {
+      "@id": "https://huggingface.co/datasets/abisee/cnn_dailymail",
+      "prov:label": "CNN/DailyMail",
+      "sc:license": "Apache 2.0"
+    },
+    {
+      "@id": "https://cs.rochester.edu/nlp/rocstories/",
+      "prov:label": "ROCStories",
+      "sc:license": "Free for research use"
+    },
+    {
+      "@id": "https://visionandlanguage.net/VIST/dataset.html",
+      "prov:label": "SIND (Sequential Image Narrative Dataset)",
+      "sc:license": "Free for non-commercial research use"
+    }
+  ],
+  "prov:wasGeneratedBy": [
+    {
+      "@type": "prov:Activity",
+      "prov:type": {
+        "@id": "https://www.wikidata.org/wiki/Q4929239"
+      },
+      "sc:description": "Narratives were sampled from four publicly available datasets spanning encyclopedic text (Wikipedia), news articles (CNN/DailyMail), commonsense stories (ROCStories), and visual narratives (SIND). Narratives were filtered to ensure a minimum length suitable for span masking."
+    },
+    {
+      "@type": "prov:Activity",
+      "prov:type": {
+        "@id": "https://www.wikidata.org/wiki/Q5227332"
+      },
+      "sc:description": "One to three contiguous sentences were masked from each narrative to create infilling instances. Blank positions (opening, middle, closing) were systematically varied to ensure balanced coverage across narrative positions. The masked span serves as the gold answer for evaluation."
+    },
+    {
+      "@type": "prov:Activity",
+      "prov:type": {
+        "@id": "https://www.wikidata.org/wiki/Q1172378"
+      },
+      "sc:description": "Instances were filtered to remove duplicates and narratives where masking produced degenerate or trivially short contexts."
+    }
+  ]
+}
