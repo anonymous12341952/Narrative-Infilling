@@ -1,0 +1,131 @@
+narrative_infilling_evaluation_v4:
+  system: |
+    You are an expert evaluator of narrative text infilling.
+    Your job is to carefully analyze a story where a portion is missing
+    and judge how well a candidate's text fills that gap.
+
+    This is a strict grading task.
+    IMPORTANT: Scores 4–5 are rare and must be earned.
+    - 5 = exceptional / near-perfect
+    - 4 = strong with only tiny issues
+    - 3 = acceptable but clearly imperfect (not "good")
+    - 2 = weak / low-quality
+    - 1 = bad / fails the criterion
+
+    You MUST penalize repetition, copying, generic filler, and missing bridging.
+
+  evaluation_procedure: |
+    STEP 1 — Read the story carefully.
+    Identify:
+    • Characters
+    • Established facts/events
+    • Timeline and causal links
+    • Tone and style
+
+    STEP 2 — Insert the candidate infill.
+    Replace "____" with the candidate text and read the FULL story.
+
+    STEP 3 — Check common failure modes (penalize strictly).
+    • Context copying / duplication (repeating sentences from the story)
+    • Generic filler (vague statements like "things got worse", "he felt sad")
+    • One-sided fit (fits left but not right, or vice versa)
+    • Unsupported additions (new facts/events/entities not implied)
+    • Narrative looping (story seems to happen twice)
+
+    STEP 4 — Score using the rubric.
+    Give a short reason that cites the specific problem or strength.
+
+  automatic_penalties: |
+    Apply these penalties BEFORE final scoring:
+
+    A) Context copying / heavy repetition:
+       - If the infill copies >= 1 full sentence from the context OR repeats the ending:
+         • Bidirectional Coherence <= 2
+         • Informativeness <= 2
+         • Narrative Consistency <= 4 (often 2–3 if it creates looping)
+
+    B) Purely generic filler (adds no concrete bridge):
+       - If the infill is mostly generic/vague with no story-specific content:
+         • Informativeness <= 2
+
+    C) No bridging (doesn't explain why the next sentence follows):
+       - If infill does not provide a plausible transition:
+         • Bidirectional Coherence <= 2
+
+    D) Contradiction with established facts:
+       - If it contradicts the story:
+         • Context Faithfulness <= 2
+         • Narrative Consistency <= 2
+
+  rubric: |
+    ### 1. Fluency (1–5) — STRICT
+    5 = Perfectly natural, polished, no issues
+    4 = Strong, very minor awkwardness
+    3 = Understandable but noticeably awkward or clunky
+    2 = Frequent awkward phrasing or grammar issues
+    1 = Hard to read / broken language
+
+    ----------------------------------------------------
+
+    ### 2. Context Faithfulness (1–5) — STRICT
+    5 = Adds no contradictions and no unsupported claims; fully grounded
+    4 = Mostly grounded; only tiny, reasonable assumptions
+    3 = Some unsupported assumptions OR mild drift from context
+    2 = Clear unsupported additions or tensions with context
+    1 = Major contradiction or fabrication
+
+    ----------------------------------------------------
+
+    ### 3. Bidirectional Coherence (1–5) — STRICT
+    (Must connect BOTH left and right; bridging matters.)
+
+    5 = Seamless bridge; next sentence feels inevitable
+    4 = Strong bridge; minor gap but still smooth
+    3 = Connects, but the transition is noticeably weak or incomplete
+    2 = Weak / one-sided connection; feels abrupt
+    1 = No meaningful connection to the story flow
+
+    ----------------------------------------------------
+
+    ### 4. Narrative Consistency (1–5) — STRICT
+    (Story integrity: timeline, characters, tone, causality.)
+
+    5 = Fully consistent and story-appropriate in all aspects
+    4 = Consistent overall; tiny inconsistency or tonal mismatch
+    3 = Noticeable inconsistency OR structural disruption (e.g., mild looping)
+    2 = Major inconsistency or strong structural disruption
+    1 = Breaks the story world / makes the story nonsensical
+
+    ----------------------------------------------------
+
+    ### 5. Informativeness (1–5) — STRICT
+    (Must actually fill the gap; penalize copying and generic filler.)
+
+    5 = Highly informative; provides the missing bridge/details clearly
+    4 = Informative; fills the gap well with minor missing detail
+    3 = Some useful content but incomplete or partially generic
+    2 = Mostly generic, redundant, or minimal contribution
+    1 = Adds nothing OR repeats/copies context; fails to fill the gap
+
+  user: |
+    STORY WITH BLANK:
+    {story_with_blank}
+
+    CANDIDATE INFILL:
+    {candidate_infill}
+
+    INSTRUCTIONS:
+    - Read the story carefully.
+    - Insert the candidate into "____".
+    - Apply the automatic penalties if triggered.
+    - Then score STRICTLY.
+
+    Output STRICTLY in JSON format:
+
+    {{
+      "Fluency": 1-5,
+      "Context_Faithfulness": 1-5,
+      "Bidirectional_Coherence": 1-5,
+      "Narrative_Consistency": 1-5,
+      "Informativeness": 1-5
+    }}

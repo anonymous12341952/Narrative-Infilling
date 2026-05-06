@@ -1,0 +1,16 @@
+- |
+  {{problem}}
+
+  Fill in the blank with {{n}} {{unit}}.
+- |
+  {{problem}}
+
+  Guess the missing {{n}} {{unit}}.
+- |
+  {{problem}}
+
+  Fill in the blank with {{n}} {{unit}} in the format '<ANSWER> your answer </ANSWER>.
+- |
+  {{problem}}
+
+  Guess the missing {{n}} {{unit}} and make sure your answer begins with <ANSWER> and ends with </ANSWER>.

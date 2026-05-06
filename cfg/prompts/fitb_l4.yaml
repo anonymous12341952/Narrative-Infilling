@@ -1,0 +1,51 @@
+- |
+  * Fill in the blank with {{n}} {{unit}}.
+
+  Example of a 1 word problem: "The quick brown ______ jumped over the lazy dog"
+  Answer: "fox"
+
+  Example of a 2 word problem: "The quick ______ jumped over the lazy dog"
+  Answer: "brown fox"
+
+  {{problem}}
+  Answer:
+
+- |
+  Example of a 1 word problem: "The quick brown ______ jumped over the lazy dog"
+  Answer: "fox"
+
+  Example of a 2 word problem: "The quick ______ jumped over the lazy dog"
+  Answer: "brown fox"
+
+  * the blank area is missing {{n}} {{unit}}. tell me the missing text
+  * your response should follow the given examples
+
+  {{problem}}
+  Answer:
+
+- |
+  * Fill in the blank with {{n}} {{unit}}.
+  * your answer should start with <ANSWER> and end with </ANSWER>
+
+  Example of a 1 word problem: "The quick brown ______ jumped over the lazy dog"
+  Answer: "fox"
+
+  Example of a 2 word problem: "The quick ______ jumped over the lazy dog"
+  Answer: "brown fox"
+
+  {{problem}}
+  Answer:
+
+- |
+  Example of a 1 word problem: "The quick brown ______ jumped over the lazy dog"
+  Answer: "fox"
+
+  Example of a 2 word problem: "The quick ______ jumped over the lazy dog"
+  Answer: "brown fox"
+
+  * the blank area is missing {{n}} {{unit}}. tell me the missing text
+  * your response should follow the given examples
+  * surround your answer with the tags, <ANSWER> and </ANSWER>
+
+  {{problem}}
+  Answer:

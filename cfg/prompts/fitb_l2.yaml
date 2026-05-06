@@ -1,0 +1,27 @@
+- |
+  {{problem}}
+
+  Fill in the blank with {{n}} {{unit}}. 
+
+  Answer:
+
+- |
+  {{problem}}
+
+  The blank area is missing {{n}} {{unit}}. Fill in the blank.
+
+  Answer:
+
+- |
+  {{problem}}
+
+  Fill in the blank with {{n}} {{unit}}. your answer should start with <ANSWER> and end with </ANSWER>
+
+  Answer:
+
+- |
+  {{problem}}
+
+  The blank area is missing {{n}} {{unit}}. Fill in the blank. surround your answer with the tags, <ANSWER> and </ANSWER>
+
+  Answer:

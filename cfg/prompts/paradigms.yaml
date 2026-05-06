@@ -1,0 +1,63 @@
+# abductive
+- |
+  {{problem}}
+
+  * Fill in the blank.
+  * The blank area is missing {{n}} {{unit}}
+  * surround your answer with the tags, <ANSWER> and </ANSWER>
+  * use abductive reasoning to come up with your answer
+
+  Answer:
+
+# causal
+- |
+  {{problem}}
+
+  * Fill in the blank.
+  * The blank area is missing {{n}} {{unit}}
+  * surround your answer with the tags, <ANSWER> and </ANSWER>
+  * use causal inference to come up with your answer
+
+  Answer:
+
+# counterfactual
+- |
+  {{problem}}
+
+  * Fill in the blank.
+  * The blank area is missing {{n}} {{unit}}
+  * surround your answer with the tags, <ANSWER> and </ANSWER>
+  * use counterfactual thinking when coming up with your answer.
+
+  Answer:
+
+# graph-structured
+# - |
+#   {{problem}}
+#
+#   * Fill in the blank.
+#   * The blank area is missing {{n}} {{unit}}
+#   * surround your answer with the tags, <ANSWER> and </ANSWER>
+#
+#   Answer:
+
+# chain-of-thought
+- |
+  {{problem}}
+
+  * Fill in the blank.
+  * The blank area is missing {{n}} {{unit}}
+  * surround your answer with the tags, <ANSWER> and </ANSWER>
+  * utilize chain-of-thought reasoning to come up with your answer.
+
+  Answer:
+
+# retrieval augmented
+# - |
+#   {{problem}}
+#
+#   * Fill in the blank.
+#   * The blank area is missing {{n}} {{unit}}
+#   * surround your answer with the tags, <ANSWER> and </ANSWER>
+#
+#   Answer:

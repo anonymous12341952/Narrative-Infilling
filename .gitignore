@@ -1,0 +1,6 @@
+*.egg-info
+data/llm_cache/*
+data/prepared/*
+data/responses/*
+data/eval_files/*
+__pycache__/
